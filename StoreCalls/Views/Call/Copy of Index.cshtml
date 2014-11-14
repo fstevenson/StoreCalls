@@ -1,0 +1,97 @@
+﻿@model StoreCalls.Models.Call
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h2>Registration of call</h2>
+@using (Html.BeginForm("Index", "Call"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Person.PhoneNumber)
+                @Html.TextBoxFor(m => m.Person.PhoneNumber)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Person.Name)
+                @Html.TextBoxFor(m => m.Person.Name)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Person.LastName)
+                @Html.TextBoxFor(m => m.Person.LastName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Person.Address1)
+                @Html.TextBoxFor(m => m.Person.Address1)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Person.Address2)
+                @Html.TextBoxFor(m => m.Person.Address2)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Program)
+                @Html.DropDownListFor(m => m.Program, (SelectList)ViewBag.ProgramList)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Category)
+                @Html.DropDownListFor(m => m.Category, (SelectList)ViewBag.CategoriesList)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Comments)
+                @Html.TextAreaFor(m => m.Comments)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Positive)
+                <input type="radio" name="commentPN" value="Positive" /> Positive
+                <input type="radio" name="commentPN" value="Negative" /> Negative
+            </li>
+        </ol>
+        <input class="register-call" type="submit" value="Register" />
+    </fieldset>
+    
+    <div id="formS">
+
+    </div>
+    <br /><br /><br />
+    <div id="formS2">
+        
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('.register-call').on("click", function () {
+                var form = $(this).parent("form");
+                $('div#formS').text($("form").serialize());
+                console.log("registration");
+                $.ajax({
+                    type: "POST",
+                    url: form.attr('action'),
+                    //url: "/call",
+                    dataType: 'json',
+                    ContentType: 'application/json',
+                    //data: { Comments: $('textarea#Comments').val(), Caller_Name: $('input#Caller_Name').val(), Caller_LastName: $('input#Caller_LastName').val() }
+                    //data: { comments: comments }
+                    data: $("form").serialize()
+                    //data: stringfied
+                })
+                    .success(function (data) {
+                        console.log(data);
+                        alert(data.Comments);
+                    })
+                    .error(function () {
+                        alert("Your bid has been rejected");
+                    });
+
+                return false;
+            });
+        });
+    </script>
+}
