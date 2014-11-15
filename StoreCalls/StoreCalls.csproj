@@ -162,28 +162,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\CallContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411122023285_InitialCreate.cs" />
-    <Compile Include="Migrations\201411122023285_InitialCreate.Designer.cs">
-      <DependentUpon>201411122023285_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411142203521_InitialCreate1.cs" />
-    <Compile Include="Migrations\201411142203521_InitialCreate1.Designer.cs">
-      <DependentUpon>201411142203521_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Call.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,7 +242,6 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\Custom\registration.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -298,26 +281,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Call\Index.cshtml" />
-    <Content Include="Views\Call\Details.cshtml" />
-    <Content Include="Views\Call\Create.cshtml" />
-    <Content Include="Views\Call\Edit.cshtml" />
-    <Content Include="Views\Call\Delete.cshtml" />
-    <Content Include="Views\Call\Copy of Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411122023285_InitialCreate.resx">
-      <DependentUpon>201411122023285_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411142203521_InitialCreate1.resx">
-      <DependentUpon>201411142203521_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
